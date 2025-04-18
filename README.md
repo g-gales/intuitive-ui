@@ -1,3 +1,9 @@
+# Deploying new build
+
+### `npm run deploy`
+
+generates a new build that GitHub hosts off of.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
