@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import PageWrapper from "./components/PageWrapper";
+import IntroPage from "./components/IntroPage/IntroPage";
+import InfographicPage from "./components/InfographicPage/InfographicPage";
+import ModulePage from "./components/ModulePage/ModulePage";
+import ConclusionPage from "./components/ConclusionPage/ConclusionPage";
+import "./App.scss";
 
 function App() {
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AnimatePresence mode="wait">
+      <div className="app-container">
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <PageWrapper>
+                <IntroPage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/infographic"
+            element={
+              <PageWrapper>
+                <InfographicPage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/module/:id"
+            element={
+              <PageWrapper>
+                <ModulePage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/conclusion"
+            element={
+              <PageWrapper>
+                <ConclusionPage />
+              </PageWrapper>
+            }
+          />
+        </Routes>
+      </div>
+    </AnimatePresence>
   );
 }
 

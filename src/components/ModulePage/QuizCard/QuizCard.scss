@@ -1,0 +1,43 @@
+@import "../../../styles/variables.scss";
+
+.opt-container {
+  flex: 1 1 1rem;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .quiz-opt {
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    max-width: 350px;
+
+    &.quiz-opt-correct {
+      border: 4px solid #994545;
+    }
+
+    &.quiz-opt-wrong {
+      border: 4px solid $d-green;
+    }
+
+    &.quiz-opt-neutral {
+      border: 2px solid $d-grey;
+    }
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .quiz-reveal {
+    padding: 1rem;
+
+    &.correct {
+      border-left: 4px solid $d-green;
+      border-radius: 8px;
+    }
+    &.incorrect {
+      border-left: 4px solid #994545;
+      border-radius: 8px;
+    }
+  }
+}

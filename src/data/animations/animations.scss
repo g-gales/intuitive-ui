@@ -1,0 +1,414 @@
+@import "../../styles/variables.scss";
+
+// Hierarchy Animation
+.hierarchy-demo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  .fade-in {
+    opacity: 0;
+
+    &.delay-1 {
+      margin-top: 0;
+      animation-duration: 3s;
+      animation-name: fadeInDelay1;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+    }
+    &.delay-2 {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      animation-duration: 3s;
+      animation-name: fadeInDelay2;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+
+      > .tier-2 {
+        height: 1.8rem;
+        width: 4.6rem;
+        background-color: $l-green;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $l-grey;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+    }
+    &.delay-3 {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      animation-duration: 3s;
+      animation-name: fadeInDelay3;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+
+      > .tier-3 {
+        height: 1.5rem;
+        width: 4.3rem;
+        background-color: #8ca890;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $d-grey;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+
+    &.tier-1 {
+      height: 2rem;
+      width: 5rem;
+      background-color: $d-green;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $l-grey;
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+  }
+}
+
+@keyframes fadeInDelay1 {
+  0%,
+  15% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  20%,
+  60% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes fadeInDelay2 {
+  0%,
+  35% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  40%,
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes fadeInDelay3 {
+  0%,
+  55% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  60%,
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+// Responsive Animation
+.responsive-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  animation: resizeWrapper 6s ease-in-out infinite alternate;
+  overflow: hidden;
+}
+
+@keyframes resizeWrapper {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.grid-box {
+  background-color: $yellow;
+  color: $d-grey;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+// Interactive Cues Animation
+.cue-demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+  position: relative;
+
+  .cue-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .cue-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: $l-green;
+    color: $l-grey;
+    border: 2px solid #999;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+    width: 160px;
+    animation: btnSequence 3s ease-in-out infinite;
+  }
+
+  .cue-cursor {
+    position: absolute;
+    top: 20%;
+    left: -40px;
+    font-size: 2rem;
+    color: #333;
+    animation: cursorSequence 3s ease-in-out infinite;
+  }
+}
+@keyframes btnSequence {
+  0% {
+    background-color: $l-green;
+    transform: scale(1);
+  }
+  20% {
+    background-color: $d-green;
+    transform: scale(1.1);
+  } /* hover */
+  40% {
+    background-color: $d-green;
+    transform: scale(1.1);
+  } /* pause */
+  60% {
+    background-color: $d-green;
+    transform: scale(0.95);
+  } /* click */
+  80% {
+    background-color: $l-green;
+    transform: scale(1);
+  }
+  100% {
+    background-color: $l-green;
+    transform: scale(1);
+  }
+}
+
+@keyframes cursorSequence {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(40px, 10px);
+    opacity: 1;
+  } /* hover */
+  40% {
+    transform: translate(40px, 10px);
+    opacity: 1;
+  } /* pause */
+  60% {
+    transform: translate(38px, 13px) scale(0.95);
+    opacity: 0.7;
+  } /* click */
+  80% {
+    transform: translate(40px, 10px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+
+// Accessibility Focus Animation
+.accessibility-demo {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  gap: 0.5rem;
+  position: relative;
+
+  > header {
+    background-color: $d-green;
+    color: $l-grey;
+
+    > nav > ul {
+      margin: 0;
+      list-style-type: none;
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem;
+      justify-content: center;
+      text-transform: uppercase;
+      font-weight: 500;
+
+      > li {
+        padding: 1rem;
+        border: 3px solid transparent;
+        border-radius: 4px;
+
+        &.li-1 {
+          animation: navHighlight1 3s linear infinite;
+        }
+        &.li-2 {
+          animation: navHighlight2 3s linear infinite;
+        }
+        &.li-3 {
+          animation: navHighlight3 3s linear infinite;
+        }
+      }
+    }
+  }
+
+  > main {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+
+    .keyboard-icon {
+      font-size: 3rem;
+      color: $d-grey;
+      animation: tabPress 3s linear infinite;
+      transform-origin: center;
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}
+
+@keyframes tabPress {
+  0%,
+  15% {
+    transform: scale(1);
+  }
+  20%,
+  25% {
+    transform: scale(0.85);
+  }
+  30%,
+  45% {
+    transform: scale(1);
+  }
+  50%,
+  55% {
+    transform: scale(0.85);
+  }
+  60%,
+  75% {
+    transform: scale(1);
+  }
+  80%,
+  85% {
+    transform: scale(0.85);
+  }
+  90%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes navHighlight1 {
+  0%,
+  20% {
+    border-color: transparent;
+  }
+  21%,
+  30% {
+    border-color: $yellow;
+  }
+  47% {
+    border-color: $yellow;
+  }
+  48%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+@keyframes navHighlight2 {
+  0%,
+  50% {
+    border-color: transparent;
+  }
+  51%,
+  60% {
+    border-color: $yellow;
+  }
+  77% {
+    border-color: $yellow;
+  }
+  78%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+@keyframes navHighlight3 {
+  0%,
+  80% {
+    border-color: transparent;
+  }
+  81%,
+  90% {
+    border-color: $yellow;
+  }
+  98% {
+    border-color: $yellow;
+  }
+  99%,
+  100% {
+    border-color: transparent;
+  }
+}

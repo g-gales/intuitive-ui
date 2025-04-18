@@ -1,0 +1,244 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins";
+
+.module-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    padding: 2rem;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+}
+
+.sidebar-toggle {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+
+  &.sidebar-open {
+    display: none;
+  }
+
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+  .hamburger-bar {
+    height: 5px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: $l-green;
+    margin: 3px;
+  }
+}
+
+.module-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  background-color: $l-grey;
+  padding: 1rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  border-right: 3px solid $d-grey;
+  border-bottom: 3px solid $d-grey;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  .btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .btn-return {
+      @include button-style($l-green, $d-green, $l-grey, $l-grey);
+      width: 5rem;
+      align-self: flex-start;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-close {
+      @include button-style(#dd9191, #994545, $d-grey, $l-grey);
+      padding: 0.5rem;
+
+      @media only screen and (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+  .sidebar-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1.5rem 0 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.75rem;
+
+      a {
+        text-decoration: none;
+        color: $d-grey;
+        font-size: 0.95rem;
+        position: relative;
+        transition: color 0.2s ease;
+
+        &:hover {
+          font-weight: 500;
+          color: $d-green;
+        }
+
+        &.active {
+          font-weight: bold;
+          color: $d-green;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -3px;
+          width: 0%;
+          height: 2px;
+          background-color: $d-green;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover::after,
+        &.active::after {
+          width: 100%;
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    position: sticky;
+    top: 2rem;
+    align-self: flex-start;
+    transform: none;
+    height: auto;
+    border-right: 3px solid $d-grey;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding: 1rem;
+    z-index: 1;
+  }
+}
+
+.module-content {
+  flex: 1;
+
+  hr {
+    @include hr-style;
+    margin: 3rem auto 0;
+  }
+
+  .module-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  .module-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .module-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .ani-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    @media only screen and (min-width: 1000px) {
+      flex-direction: row;
+
+      > .ani-caption,
+      .secondary-text {
+        flex: 1 1 100px;
+      }
+
+      > .ani-caption > .animation-caption {
+        font-size: 0rem;
+        margin-top: 0.6rem;
+        font-style: italic;
+      }
+    }
+  }
+
+  .quiz-options {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+
+    @media only screen and (min-width: 1000px) {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+
+  .course-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    .btn-prev,
+    .btn-next {
+      @include button-style($l-green, $d-green, $l-grey, $l-grey);
+      font-size: 1rem;
+      border: 2px solid $d-grey;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}

@@ -1,0 +1,170 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins";
+
+.standard-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  > header {
+    background-color: $d-green;
+    color: $l-grey;
+
+    > nav > ul {
+      margin: 0;
+      list-style-type: none;
+      display: flex;
+      gap: 2rem;
+      padding: 1rem;
+      justify-content: center;
+      text-transform: uppercase;
+      font-weight: 500;
+
+      > li {
+        position: relative;
+        padding: 1rem 0;
+
+        &.header-active {
+          background-color: $l-grey;
+          color: $d-grey;
+          padding: 1rem;
+          border-top-right-radius: 10px;
+          border-top-left-radius: 10px;
+          z-index: 1;
+          transform: translateY(18px);
+        }
+      }
+    }
+  }
+
+  > main {
+    margin: 0 auto;
+    padding: 0 2rem;
+    flex: 1;
+
+    > ul {
+      padding: 0;
+      font-size: 0.9rem;
+      justify-content: center;
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      gap: 0.4rem;
+      color: $d-green;
+
+      > .breadcrumb-item {
+        text-decoration: underline;
+
+        &.bc-active {
+          font-weight: bold;
+        }
+      }
+    }
+
+    > h3 {
+      margin-bottom: 0;
+    }
+  }
+
+  > footer {
+    background-color: $l-green;
+    padding: 0.5rem 2rem;
+  }
+}
+
+.unusual-layout {
+  background-color: $l-green;
+  color: $l-grey;
+  padding: 0 2rem;
+  height: 100%;
+
+  > h4 {
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
+
+  > nav > ul {
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    justify-content: flex-end;
+    text-decoration: underline;
+  }
+}
+
+.form-demo {
+  display: flex;
+  gap: 1rem;
+  &.good {
+    padding: 2rem 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn {
+    &.primary {
+      @include button-style($l-green, $d-green, $l-grey, $l-grey);
+      margin-left: 0.5rem;
+    }
+    &.secondary {
+      @include button-style(#d38a8a, #a54444, $d-grey, $l-grey);
+      margin-right: 0.5rem;
+    }
+    &.bad-primary {
+      @include button-style($yellow, $d-green, $l-grey, $l-grey);
+      justify-self: flex-start;
+      margin-bottom: 4rem;
+      margin-right: 6rem;
+      margin-left: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    &.bad-secondary {
+      @include button-style($orange, $yellow, $l-grey, $l-grey);
+      justify-self: baseline;
+      margin: 0.5rem 3rem;
+    }
+  }
+}
+
+.search-demo {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.3rem;
+
+  > .search-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  &.bad-search {
+    align-items: center;
+  }
+
+  input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1.5px solid $d-grey;
+  }
+
+  button {
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: $l-green;
+    color: $l-grey;
+    border: 1px solid $d-grey;
+
+    &.bad-btn {
+      border: none;
+      background-color: $l-grey;
+      color: $orange;
+      font-size: 1.5rem;
+    }
+  }
+}
